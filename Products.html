@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handloom Products - Fashion</title>
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #FF00c8; /* Orange background */
+      color: #333;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background-color: #FF00c8; /* Slightly darker orange */
+      padding: 20px 0;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      text-align: center;
+      color: white;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      background-color: white;
+      color: #FF00c8;
+      border-radius: 5px;
+    }
+
+    .basket {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .product {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .product img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+      color: #FF00c8;
+    }
+
+    .product p {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .product button {
+      background-color: #FF00c8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product button:hover {
+      background-color: #e67300;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Optional: Footer */
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background-color: #FF00c8;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Handloom Fashion</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html" class="active">Products</a>
+          <a href="basket.html">🛒 Basket</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="products-grid container">
+    <div class="product">
+      <img src="img2.jpeg.jpg" alt="bag">
+      <h3>Bag</h3>
+      <p>Price: ₹1200</p>
+    <button class="add-to-basket" 
+          data-name="bag" 
+          data-price="1200" 
+          data-image="img2.jpeg">
+    Add to Basket
+  </button>
+    </div>
+
+    <div class="product">
+      <img src="img3.jpeg.jpg" alt="saree">
+      <h3>Each Saree</h3>
+      <p>Price: ₹1500</p>
+      <button class="add-to-basket" 
+          data-name="Saree" 
+          data-price="1500" 
+          data-image="img3.jpeg">
+    Add to Basket
+  </button>
+    </div>
+
+    <div class="product">
+      <img src="img4.jpeg.jpg" alt="saree">
+      <h3>Saree</h3>
+      <p>Price: ₹5500</p>
+      <button class="add-to-basket" 
+          data-name="Saree" 
+          data-price="5500" 
+          data-image="img4.jpeg">
+    Add to Basket
+  </button>
+    </div>
+
+    <div class="product">
+      <img src="img5.webp" alt="saree">
+      <h3>Saree</h3>
+      <p>Price: ₹6500</p>
+     <button class="add-to-basket" 
+          data-name="Saree" 
+          data-price="6500" 
+          data-image="img5.webp">
+    Add to Basket
+  </button>
+    </div>
+    <!-- Add more products as needed -->
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Handloom Fashion. All Rights Reserved.</p>
+  </footer>
+
+ <script>
+const addButtons = document.querySelectorAll('.add-to-basket');
+
+addButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const product = {
+      name: button.dataset.name,
+      price: parseInt(button.dataset.price),
+      image: button.dataset.image,
+      quantity: 1
+    };
+
+    // Get current basket from localStorage
+    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+
+    // Check if product already exists
+    const existing = basket.find(p => p.name === product.name);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      basket.push(product);
+    }
+
+    localStorage.setItem('basket', JSON.stringify(basket));
+    alert(`${product.name} added to basket!`);
+  });
+});
+</script>
+
+
+</body>
+</html>

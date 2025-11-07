@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Handloom Fashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff8f0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #ff00c8, #ff00c8);
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 25px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #fff;
+      color: #ff00c8;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Main Section */
+    main {
+      max-width: 800px;
+      margin: 80px auto;
+      text-align: center;
+      padding: 0 20px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    main h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff00c8;
+    }
+
+    main p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(90deg, #ff00c8, #ff00c8);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    footer .highlight {
+      margin-top: 5px;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      main h2 {
+        font-size: 2rem;
+      }
+      main p {
+        font-size: 1rem;
+      }
+    }
+
+    @media(max-width:480px) {
+      nav {
+        gap: 15px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Contact Us</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Products</a>
+        <a href="basket.html">🛒 Basket</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>We’d love to hear from you!</h2>
+    <p>Email: <a href="mailto:support@handloomfashion.com">support@handloomfashion.com</a></p>
+    <p>Phone: <a href="tel:+917601017851">+91 7601017851</a></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Handloom Fashion. All Rights Reserved.</p>
+    <p class="highlight">✨ Made with efforts ❤️ ✨</p>
+    <p class="highlight">Done by Amar</p>
+    <p class="highlight">Done by Swamy</p>
+    <p class="highlight">Done by Kalyan</p>
+  </footer>
+
+</body>
+</html>
