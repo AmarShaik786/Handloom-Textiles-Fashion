@@ -196,12 +196,12 @@
   <header>
     <h1>Handloom Fashion</h1>
     <nav>
-      <a href="index.html" class="active">Home</a>
+      <a href="#" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="products.html">Products</a>
       <a href="basket.html">🛒 Basket</a>
       <a href="contact.html">Contact</a>
-      <a onclick="openLogin()">Login</a>
+      <a href="#" onclick="openLogin()">Login</a>
     </nav>
   </header>
 
@@ -244,8 +244,16 @@
   </footer>
 
 <script>
+
+  /* --- FORCE LOGIN --- */
+  window.onload = function () {
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      showLogin();
+    }
+  }
+
   function openLogin() {
-    document.getElementById("loginModal").style.display = "flex";
+    showLogin();
   }
 
   function showSignup() {
@@ -258,7 +266,7 @@
     document.getElementById("loginModal").style.display = "flex";
   }
 
-  // LOGIN VALIDATION + REDIRECT
+  /* --- LOGIN VALIDATION --- */
   function loginUser() {
     let user = document.getElementById("loginUser").value;
     let pass = document.getElementById("loginPass").value;
@@ -267,14 +275,15 @@
     let savedPass = localStorage.getItem("pass");
 
     if (user === savedUser && pass === savedPass) {
+      localStorage.setItem("isLoggedIn", "true");
       alert("Login Successful!");
-      window.location.href = "products.html"; 
+      document.getElementById("loginModal").style.display = "none";
     } else {
       alert("Invalid Username or Password!");
     }
   }
 
-  // SIGNUP
+  /* --- SIGNUP --- */
   function signupUser() {
     let user = document.getElementById("newUser").value;
     let pass = document.getElementById("newPass").value;
@@ -291,10 +300,12 @@
     showLogin();
   }
 
-  // Close popup by clicking outside
+  /* --- PREVENT CLOSING LOGIN WITHOUT LOGGING IN --- */
   window.onclick = function(e) {
     if (e.target.classList.contains("modal")) {
-      e.target.style.display = "none";
+      if (localStorage.getItem("isLoggedIn") === "true") {
+        e.target.style.display = "none";
+      }
     }
   }
 </script>
