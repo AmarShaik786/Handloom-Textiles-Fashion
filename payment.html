@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UPI Payment</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 30px;
+    }
+    .btn {
+      background: #28a745;
+      color: white;
+      padding: 14px 22px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .btn:hover { background: #218838; }
+
+    .box {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+    }
+
+    img {
+      width: 250px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Pay Using UPI</h2>
+<p>Google Pay / PhonePe / Paytm Accepted</p>
+
+<button class="btn" onclick="makePayment()">Pay Now</button>
+
+<div class="box">
+  <h3>Scan QR to Pay</h3>
+  <img src="qr.png" alt="QR Code">
+  <p><b>UPI ID:</b> yourupiid@oksbi</p>
+</div>
+
+<script>
+function makePayment() {
+  let upi_id = "yourupiid@oksbi";   // <-- YOUR UPI ID
+  let name = "Handloom Store";
+  let amount = "499";
+  let note = "Handloom Product";
+
+  let url =
+    "upi://pay?pa=" + upi_id +
+    "&pn=" + name +
+    "&am=" + amount +
+    "&tn=" + note +
+    "&cu=INR";
+
+  // Redirect = Opens UPI App
+  window.location.href = url;
+
+  // After 3 seconds → Go to success page
+  setTimeout(() => {
+    window.location.href = "success.html";
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
