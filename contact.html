@@ -6,124 +6,26 @@
   <title>Contact - Handloom Fashion</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset & Global */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', Arial, sans-serif;
-    }
-
-    body {
-      background-color: #fff8f0;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      transition: all 0.3s ease;
-      color: inherit;
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(90deg, #ff00c8, #ff00c8);
-      padding: 20px 0;
-      text-align: center;
-      color: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #fff;
-      font-weight: 600;
-      padding: 8px 15px;
-      border-radius: 25px;
-    }
-
-    nav a:hover,
-    nav a.active {
-      background-color: #fff;
-      color: #ff00c8;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* Main Section */
-    main {
-      max-width: 800px;
-      margin: 80px auto;
-      text-align: center;
-      padding: 0 20px;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    main h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #ff00c8;
-    }
-
-    main p {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background: linear-gradient(90deg, #ff00c8, #ff00c8);
-      color: #fff;
-      font-weight: 600;
-    }
-
-    footer .highlight {
-      margin-top: 5px;
-      font-size: 0.95rem;
-      font-weight: 400;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive */
-    @media(max-width:768px) {
-      main h2 {
-        font-size: 2rem;
-      }
-      main p {
-        font-size: 1rem;
-      }
-    }
-
-    @media(max-width:480px) {
-      nav {
-        gap: 15px;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', Arial, sans-serif; }
+    body { background-color:#fff8f0; color:#333; line-height:1.6; }
+    a { text-decoration:none; color:inherit; transition:0.3s; }
+    header { background:linear-gradient(90deg, #ff00c8, #ff00c8); padding:20px 0; text-align:center; color:#fff; box-shadow:0 2px 10px rgba(0,0,0,0.2); position:sticky; top:0; z-index:1000; }
+    header h1 { font-size:2.5rem; font-weight:700; margin-bottom:10px; }
+    nav { display:flex; justify-content:center; gap:25px; flex-wrap:wrap; }
+    nav a { color:#fff; font-weight:600; padding:8px 15px; border-radius:25px; }
+    nav a:hover, nav a.active { background-color:#fff; color:#ff00c8; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+    main { max-width:800px; margin:80px auto; text-align:center; padding:0 20px; animation:fadeIn 1s ease forwards; }
+    main h2 { font-size:2.5rem; margin-bottom:20px; color:#ff00c8; }
+    main p { font-size:1.2rem; margin-bottom:10px; }
+    form input, form textarea { padding:10px; width:80%; max-width:400px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; }
+    form button { padding:10px 20px; border:none; border-radius:5px; background:#ff00c8; color:#fff; font-weight:600; cursor:pointer; }
+    form button:hover { background:#e600b8; }
+    #paymentStatus { margin-top:15px; font-weight:600; }
+    footer { text-align:center; padding:30px 20px; background:linear-gradient(90deg, #ff00c8, #ff00c8); color:#fff; font-weight:600; }
+    footer .highlight { margin-top:5px; font-size:0.95rem; font-weight:400; }
+    @keyframes fadeIn { 0% {opacity:0; transform:translateY(30px);} 100% {opacity:1; transform:translateY(0);} }
+    @media(max-width:768px){ main h2{ font-size:2rem;} main p{ font-size:1rem;} }
+    @media(max-width:480px){ nav{ gap:15px;} header h1{ font-size:2rem;} }
   </style>
 </head>
 <body>
@@ -134,7 +36,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="products.html">Products</a>
-        <a href="basket.html">🛒 Basket</a>
+      <a href="basket.html">🛒 Basket</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
   </header>
@@ -142,7 +44,25 @@
   <main>
     <h2>We’d love to hear from you!</h2>
     <p>Email: <a href="mailto:support@handloomfashion.com">support@handloomfashion.com</a></p>
-    <p>Phone: <a href="tel:+917601017851">+91 7601017851</a></p>
+    <p>Phone: <a href="tel:+917601017851">+91 8125066766</a></p>
+
+    <h3>Payment Failure Help</h3>
+    <p>If your payment fails, it means the transaction could not be completed. This can happen due to:</p>
+    <ul style="text-align:left; max-width:400px; margin:10px auto;">
+      <li>Incorrect card or payment details</li>
+      <li>Insufficient balance</li>
+      <li>Network or bank issues</li>
+    </ul>
+    <p>Please fill the form below so we can check and assist you:</p>
+
+    <form id="paymentForm">
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="email" placeholder="Your Email" required><br>
+      <input type="number" name="amount" placeholder="Payment Amount" required><br>
+      <textarea name="issue" placeholder="Describe the issue / Error message" rows="4" required></textarea><br>
+      <button type="submit">Report Payment Failure</button>
+      <p id="paymentStatus"></p>
+    </form>
   </main>
 
   <footer>
@@ -152,6 +72,27 @@
     <p class="highlight">Done by Swamy</p>
     <p class="highlight">Done by Kalyan</p>
   </footer>
+
+  <script>
+    const paymentForm = document.getElementById('paymentForm');
+    const paymentStatus = document.getElementById('paymentStatus');
+
+    paymentForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = paymentForm.name.value;
+      const email = paymentForm.email.value;
+      const amount = paymentForm.amount.value;
+      const issue = paymentForm.issue.value;
+
+      // Frontend-only simulation
+      paymentStatus.textContent = `Thank you ${name}! Your payment issue has been noted. Please contact support at support@handloomfashion.com if needed.`;
+      paymentStatus.style.color = 'green';
+
+      // Reset form
+      paymentForm.reset();
+    });
+  </script>
 
 </body>
 </html>
