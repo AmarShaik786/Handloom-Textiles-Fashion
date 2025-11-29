@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Handloom Fashion - Home</title>
+
   <style>
     * {
       margin: 0;
@@ -19,7 +20,7 @@
     }
 
     header {
-      background: linear-gradient(90deg, #ff00c8, #ff00c8);
+      background: #ff00c8;
       padding: 20px 0;
       position: sticky;
       top: 0;
@@ -49,6 +50,7 @@
       padding: 8px 15px;
       border-radius: 5px;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover,
@@ -95,11 +97,11 @@
       margin-bottom: 30px;
     }
 
-    .hero-content .search-bar {
+    .search-bar {
       position: relative;
-      display: inline-block;
       width: 100%;
       max-width: 400px;
+      margin: auto;
     }
 
     .search-bar input {
@@ -107,7 +109,6 @@
       padding: 12px 45px 12px 20px;
       border-radius: 30px;
       border: none;
-      outline: none;
       font-size: 1em;
     }
 
@@ -123,88 +124,73 @@
       width: 40px;
       height: 40px;
       cursor: pointer;
-      font-size: 1.2em;
-      transition: 0.3s;
     }
 
-    .search-bar button:hover {
-      background-color: #ff00c8;
+    /* POPUP MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Login Section */
-    .login-section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .login-section h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #ff00c8;
-    }
-
-    .login-box {
-      max-width: 350px;
-      margin: 0 auto;
+    .modal-content {
       background: white;
       padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      width: 350px;
+      border-radius: 12px;
+      text-align: center;
+      animation: pop 0.3s ease;
     }
 
-    .login-box input {
+    @keyframes pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-content input {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #aaa;
       border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1em;
     }
 
-    .login-box button {
+    .modal-content button {
       width: 100%;
-      padding: 12px;
-      background-color: #ff00c8;
+      padding: 10px;
+      background: #ff00c8;
+      border: none;
       color: white;
       font-size: 1em;
-      border: none;
-      border-radius: 5px;
       cursor: pointer;
-      font-weight: 600;
+      border-radius: 5px;
+      margin-top: 10px;
     }
 
-    .login-box button:hover {
-      opacity: 0.9;
+    .switch-link {
+      color: #ff00c8;
+      cursor: pointer;
+      font-weight: bold;
     }
 
     footer {
       text-align: center;
-      padding: 20px 0;
+      padding: 20px;
       background: #ff00c8;
       color: white;
       font-weight: bold;
+      margin-top: 40px;
     }
-
-    @media(max-width:768px) {
-      .hero-content h1 {
-        font-size: 2.2em;
-      }
-      .hero-content p {
-        font-size: 1em;
-      }
-    }
-
-    @media(max-width:480px) {
-      nav {
-        gap: 15px;
-      }
-      .hero-content h1 {
-        font-size: 1.8em;
-      }
-    }
-
   </style>
 </head>
+
 <body>
 
   <header>
@@ -215,13 +201,14 @@
       <a href="products.html">Products</a>
       <a href="basket.html">🛒 Basket</a>
       <a href="contact.html">Contact</a>
+      <a onclick="openLogin()">Login</a>
     </nav>
   </header>
 
   <section class="hero">
     <div class="hero-content">
       <h1>Go Traditional, Go Swadeshi</h1>
-      <p>Celebrate handcrafted traditions of India with authentic weaves from across the country.</p>
+      <p>Celebrate handcrafted traditions of India with authentic weaves.</p>
 
       <div class="search-bar">
         <input type="text" placeholder="Search handloom products...">
@@ -230,21 +217,87 @@
     </div>
   </section>
 
-  <!-- LOGIN SECTION ADDED BELOW -->
-  <section class="login-section">
-    <h2>User Login</h2>
-    <div class="login-box">
-      <form>
-        <input type="text" placeholder="Enter Username" required>
-        <input type="password" placeholder="Enter Password" required>
-        <button type="submit">Login</button>
-      </form>
+  <!-- LOGIN POPUP -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h2>Login</h2>
+      <input id="loginUser" type="text" placeholder="Enter Username">
+      <input id="loginPass" type="password" placeholder="Enter Password">
+      <button onclick="loginUser()">Login</button>
+      <p>Don't have an account? <span class="switch-link" onclick="showSignup()">Signup</span></p>
     </div>
-  </section>
+  </div>
+
+  <!-- SIGNUP POPUP -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <h2>Create Account</h2>
+      <input id="newUser" type="text" placeholder="Create Username">
+      <input id="newPass" type="password" placeholder="Create Password">
+      <button onclick="signupUser()">Signup</button>
+      <p>Already have an account? <span class="switch-link" onclick="showLogin()">Login</span></p>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2025 Handloom Fashion. All Rights Reserved.</p>
   </footer>
+
+<script>
+  function openLogin() {
+    document.getElementById("loginModal").style.display = "flex";
+  }
+
+  function showSignup() {
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("signupModal").style.display = "flex";
+  }
+
+  function showLogin() {
+    document.getElementById("signupModal").style.display = "none";
+    document.getElementById("loginModal").style.display = "flex";
+  }
+
+  // LOGIN VALIDATION + REDIRECT
+  function loginUser() {
+    let user = document.getElementById("loginUser").value;
+    let pass = document.getElementById("loginPass").value;
+
+    let savedUser = localStorage.getItem("user");
+    let savedPass = localStorage.getItem("pass");
+
+    if (user === savedUser && pass === savedPass) {
+      alert("Login Successful!");
+      window.location.href = "products.html"; 
+    } else {
+      alert("Invalid Username or Password!");
+    }
+  }
+
+  // SIGNUP
+  function signupUser() {
+    let user = document.getElementById("newUser").value;
+    let pass = document.getElementById("newPass").value;
+
+    if (user.length < 3 || pass.length < 3) {
+      alert("Username & Password must be at least 3 characters");
+      return;
+    }
+
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
+
+    alert("Signup Successful! You can now login.");
+    showLogin();
+  }
+
+  // Close popup by clicking outside
+  window.onclick = function(e) {
+    if (e.target.classList.contains("modal")) {
+      e.target.style.display = "none";
+    }
+  }
+</script>
 
 </body>
 </html>
